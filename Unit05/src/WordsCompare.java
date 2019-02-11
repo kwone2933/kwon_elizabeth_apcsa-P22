@@ -19,11 +19,14 @@ public class WordsCompare
 
 	public WordsCompare(String one, String two)
 	{
+		setWords(one, two);
 	}
 
 	public void setWords(String one, String two)
 	{
-
+		wordOne = one;
+		wordTwo = two; 
+		compare = 0; 
 	}
 
 	public void compare()
