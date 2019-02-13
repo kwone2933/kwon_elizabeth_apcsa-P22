@@ -16,15 +16,12 @@ public class StringRunner
 		Scanner keyboard = new Scanner(in);
 		out.print("Enter a word : : ");
 		String s = keyboard.nextLine();
+		
 		StringOddOrEven wordcheck = new StringOddOrEven();
 		wordcheck.setString(s);
 		wordcheck.isEven(); 
-		if (wordcheck.isEven() == true) { 
-			System.out.println(s + " is even");
-		}
-		else {
-			System.out.println(s + " is odd");
-		}
+		wordcheck.toString(); 
+		System.out.println(wordcheck);
 		}
 		
 		
