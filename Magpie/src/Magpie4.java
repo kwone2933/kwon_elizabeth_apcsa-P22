@@ -80,18 +80,30 @@ public class Magpie4
 		else
 		{
 			// Look for a two word (you <something> me)
-			// pattern
+						// pattern
 			int psn = findKeyword(statement, "you", 0);
-
-			if (psn >= 0
-					&& findKeyword(statement, "me", psn) >= 0)
-			{
-				response = transformYouMeStatement(statement);
-			}
-			else
-			{
-				response = getRandomResponse();
-			}
+			int psn1 = findKeyword(statement, "I ", 0);
+			if (psn >= 0 && findKeyword(statement, "me", psn) >= 0)
+				{
+					response = transformYouMeStatement(statement);
+						}
+						else if (findKeyword(statement, "I want to", 0) >= 0)
+						{
+							response = transformIWantToStatement(statement);
+						}
+						else if (findKeyword(statement, "I want") >= 0)
+						{
+							response = transformIWantStatement(statement);
+						}
+						else if (findKeyword(statement, "I", 0) >= 0
+								&& findKeyword(statement, "you", findKeyword(statement, "I", 0)) >= 0)
+						{
+							response = transformIYouStatement(statement);
+						}
+						else
+						{
+							response = getRandomResponse();
+						}
 		}
 		return response;
 	}
