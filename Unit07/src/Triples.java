@@ -46,11 +46,11 @@ public class Triples
 	}
 	private int greatestCommonFactor(int a, int b, int c)
 	{
-		int max =0;
+		int max =1;
 		int min =Math.min(a, Math.min(b, c)); 
 		for (int i = 0; i<=min; i++) 
 		{
-			if(a%1==0 && b%1==0 && c%1==0) {
+			if(a%i==0 && b%i==0 && c%i==0) {
 				max = i;
 			}
 		}
@@ -68,7 +68,7 @@ public class Triples
 				for (int c = b+1; c< number; c++)
 				{
 					if (pythagorean(a,b,c) && oddorEven(a,b,c) && greatestCommonFactor(a,b,c) ==1) {
-						triples = triples + "\n" + a+ " " + b + " "+c ; 
+						triples +=  a + " " + b + " "+c ; 
 					}
 				}
 			}
