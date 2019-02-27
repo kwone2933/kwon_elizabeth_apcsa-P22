@@ -11,7 +11,7 @@ public class RayOddToEven
 		int evenspace = -1;
 		for (int i=0; i< ray.length; i++) {
 			if (ray[i]%2==1) {
-				oddspace = ray[i]; 
+				oddspace = i; 
 				break; 
 			}
 		}

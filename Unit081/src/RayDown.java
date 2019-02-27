@@ -11,11 +11,11 @@ public class RayDown
 	{
 		for (int i=0; i< numArray.length; i++)
 		{
-			if (numArray[i+1]>numArray[i])
+			if (numArray[i]>numArray[i+1])
 				{
-					return false;
+					return true;
 				}
 		}
-		return true;
+		return false;
 	}	
 }

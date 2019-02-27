@@ -10,7 +10,7 @@ public class DownRunner
 		int[] test = new int[] {10,7,5,4};
 		System.out.println(RayDown.go(test)); 
 		
-		
-		System.out.println(RayDown.go(new int[] {-99,1,2,3,4,5,6,7,8,9,10,12345}));
+		int[] fortnite = new int[] {-99,1,2,3,4,5,6,7,8,9,10,12345};
+		System.out.println(RayDown.go(fortnite));
 	}
 }
