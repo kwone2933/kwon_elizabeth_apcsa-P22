@@ -5,28 +5,25 @@
 
 public class RayOddToEven
 {
-	public static boolean go(int[] ray)
+	public static int go(int[] ray)
 	{
-		int oddspace = 0;
-		int firstodd = 0; 
-		int evenspace = 0;
-		int difference = 0; 
+		int oddspace = -1;
+		int evenspace = -1;
 		for (int i=0; i< ray.length; i++) {
-			if (i%2==1) {
-				oddspace = i; 
+			if (ray[i]%2==1) {
+				oddspace = ray[i]; 
 				break; 
 			}
 		}
-		for (int j=oddspace; i< ray.length; i++) {
-			if (j%2==0) {
-				evenspace = j; 
+		for (int i=oddspace; i< ray.length; i++) {
+			if (ray[i]%2==0) {
+				evenspace = i; 
 				break; 
 			}
 		}
-		difference = evenspace - oddspace; 
-		if (oddspace == 0) {
-			
+		if (evenspace > oddspace) {
+			return evenspace - oddspace;
 		}
-		return false;
+		else return -1; 
 	}
 }
