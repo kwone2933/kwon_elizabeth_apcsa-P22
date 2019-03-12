@@ -8,6 +8,20 @@ public class DeckTester {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		Deck newDeck = new Deck(new String[] {"1", "3", "5"}, new String[] {"spades", "hearts"}, new int[] {1,6,7});
+		System.out.println(newDeck);
+		newDeck.shuffle(); 
+		System.out.println(newDeck); 
+		
+		Deck another = new Deck(new String[] {"Jack", "Queen", "King"}, new String[] {"diamonds", "spades", "clubs"}, new int[] {11,12,13});
+		System.out.println(another); 
+		another.deal(); 
+		System.out.println(another); 
+		
+		int variable = newDeck.size(); 
+		for (int i = 0; i < variable; i++) {
+			newDeck.deal(); 
+		}
+		System.out.println(newDeck); 
 	}
 }

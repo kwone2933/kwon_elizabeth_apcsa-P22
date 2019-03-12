@@ -11,7 +11,7 @@ public class Deck {
 	/**
 	 * cards contains all the cards in the deck.
 	 */
-	private List<Card> cards;
+	private Card[] cards;
 
 	/**
 	 * size is the number of not-yet-dealt cards.
@@ -22,6 +22,16 @@ public class Deck {
 
 
 	/**
+	 public Deck(String[] ranks, String[] suits, int[] values) {
+	 	ArrayList<Card> cards = new ArrayList<Card>(); 
+	 	for (int i=0; i<ranks.length; i++) {
+	 		for (int k=0; k<suits.length; k++) {
+	 			cards.add(new Card(ranks[i], suits[k], values[i]));
+	 			}
+	 		}
+	 		size = cards.length;
+	 		shuffle();
+	 	}
 	 * Creates a new <code>Deck</code> instance.<BR>
 	 * It pairs each element of ranks with each element of suits,
 	 * and produces one of the corresponding card.
@@ -30,13 +40,13 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-		ArrayList<Card> list = new ArrayList<Card>(); 
-		for (int j=0; j<ranks.length;j++) {
-			for (String suitString : suits) {
-				list.add(new Card(ranks[j], suitString, values[j])); 
+		cards = new Card[ranks.length*suits.length];
+		for (int i=0; i<ranks.length; i++) {
+			for (int j = 0; j< suits.length; j++) {
+				cards[i*suits.length+j] = new Card(ranks[i], suits[j], values[i]);
 			}
 		}
-		size = list.size(); 
+		size = cards.length; 
 		shuffle(); 
 	}
 
@@ -65,7 +75,13 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		size = cards.length;
+		for (int i= cards.length -1; i>=1; i--) {
+			int z = (int) Math.round(Math.random() *i); 
+			Card temp=cards[i];
+			cards[i] = cards[z];
+			cards[z]=temp; 
+		}
 	}
 
 	/**
@@ -92,7 +108,7 @@ public class Deck {
 		String rtn = "size = " + size + "\nUndealt cards: \n";
 
 		for (int k = size - 1; k >= 0; k--) {
-			rtn = rtn + cards.get(k);
+			rtn = rtn + cards[k];
 			if (k != 0) {
 				rtn = rtn + ", ";
 			}
@@ -103,12 +119,12 @@ public class Deck {
 		}
 
 		rtn = rtn + "\nDealt cards: \n";
-		for (int k = cards.size() - 1; k >= size; k--) {
-			rtn = rtn + cards.get(k);
+		for (int k = cards.length - 1; k >= size; k--) {
+			rtn = rtn + cards[k];
 			if (k != size) {
 				rtn = rtn + ", ";
 			}
-			if ((k - cards.size()) % 2 == 0) {
+			if ((k - cards.length) % 2 == 0) {
 				// Insert carriage returns so entire deck is visible on console.
 				rtn = rtn + "\n";
 			}
