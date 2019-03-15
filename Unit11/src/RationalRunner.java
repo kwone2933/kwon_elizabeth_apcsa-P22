@@ -8,8 +8,7 @@ public class RationalRunner
 {
 	public static void main( String args[] )
 	{
-		/*uncomment once Rational class is built
-		 *
+		
 		Rational test = new Rational();
 		out.println("test = " + test);
 
@@ -25,7 +24,7 @@ public class RationalRunner
 		Rational rOne = new Rational(1,2);
 		Rational rTwo = new Rational(2,3);
 		out.println("1/2.equals(2/3) = "+rOne.equals(rTwo));
-		test.setRational(4,6);
+		test.setNums(4,6);
 		out.println("2/3.equals(4/6) = "+rTwo.equals(test));
 				
 		out.println("\n\nrOne = "+rOne);
@@ -65,6 +64,6 @@ public class RationalRunner
 		out.println("\n\n1/6.equals(2/8) = "+rOne.equals(rTwo));				
 		rOne.add(rTwo);
 		out.println("\n\n1/6.add(2/8) = "+ rOne);		
-		*/	
+		
 	}
 }
