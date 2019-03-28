@@ -54,8 +54,8 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		int cardValue = 0; 
-		for (int i = 0; i< selectedCards.size(); i++) {
-			cardValue += selectedCards.get(i); 
+		for (int i : selectedCards) {
+			cardValue += cardAt(i).pointValue(); 
 		}
 		if (cardValue == 11 || cardValue ==0) {
 			return true; 
