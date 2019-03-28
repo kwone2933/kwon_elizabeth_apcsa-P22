@@ -73,9 +73,9 @@ public class ElevensBoard extends Board {
 	 */
 	@Override
 	public boolean anotherPlayIsPossible() {
-		List<Integer> game = new ArrayList<Integer>(cardIndexes()); 
+		List<Integer> games = new ArrayList<Integer>(cardIndexes()); 
 		
-		return (containsJQK(game) || containsPairSum11(game)); 
+		return (containsJQK(games) || containsPairSum11(games)); 
 	}
 
 	/**
@@ -122,9 +122,6 @@ public class ElevensBoard extends Board {
 				containsK = true; 
 			}
 		}
-		if (containsJ == true && containsQ ==true && containsK ==true) {
-			return true; 
-		}
-		return false; 
+		return (containsJ && containsQ && containsK);
 	}
 }
