@@ -98,6 +98,15 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void keepOnlyBlue() {
+	  Pixel[][] pixels = this.getPixels2D(); 
+	  for (Pixel[] rowArray: pixels) {
+		  for (Pixel pixelObj: rowArray) {
+			  pixelObj.setRed(0); 
+			  pixelObj.setGreen(0);
+		  }
+	  }
+  }
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
@@ -217,7 +226,62 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void Negate() {
+	  Pixel[][] pixels = this.getPixels2D(); 
+	  for (Pixel[] rowArray: pixels) {
+		  for (Pixel pixelObj : rowArray) {
+			  pixelObj.setRed(255-pixelObj.getRed());
+			  pixelObj.setRed(255-pixelObj.getGreen());
+			  pixelObj.setRed(255-pixelObj.getBlue());
+		  }
+	  }
+  }
   
+  public void grayscale() {
+	  Pixel[][] pixels = this.getPixels2D(); 
+	  for (Pixel[] rowArray: pixels) {
+		  for (Pixel pixelObj : rowArray) {
+			  int r = pixelObj.getRed(); 
+			  int g= pixelObj.getGreen(); 
+			  int b = pixelObj.getBlue(); 
+			  pixelObj.setRed((r+b+g)/3); 
+			  pixelObj.setGreen((r+b+g)/3); 
+			  pixelObj.setBlue((r+b+g)/3); 
+		  }
+	  }
+  }
+  
+  public void fixUnderwater() { 
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+		{
+			for (Pixel pixelObj : rowArray)
+			{
+				if (pixelObj.getRed() < 24 && pixelObj.getBlue() > 155)
+				{
+					 pixelObj.setRed(3*pixelObj.getRed()/2);
+					 pixelObj.setBlue(3*pixelObj.getBlue()/2);
+					 pixelObj.setGreen(3*pixelObj.getGreen()/2);
+				}
+			}
+		}
+  }
+  
+  public void mirrorVerticalRightToLeft() {
+	  Pixel[][] pixels = this.getPixels2D();
+	    Pixel leftPixel = null;
+	    Pixel rightPixel = null;
+	    int width = pixels[0].length;
+	    for (int row = 0; row < pixels.length; row++)
+	    {
+	      for (int col = 0; col < width / 2; col++)
+	      {
+	        leftPixel = pixels[row][col];
+	        rightPixel = pixels[row][width - 1 - col];
+	        rightPixel.setColor(leftPixel.getColor());
+	      }
+	    } 
+  }
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
