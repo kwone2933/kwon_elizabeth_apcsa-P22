@@ -24,6 +24,19 @@ public class PictureTester
 	  beach.explore(); 
   }
   
+  public static void testkeepOnlyRed() {
+	  Picture beach = new Picture("src/images/beach.jpg");
+	  beach.explore(); 
+	  beach.keepOnlyRed();
+	  beach.explore(); 
+  }
+  
+  public static void testkeepOnlyGreen() {
+	  Picture beach = new Picture("src/images/beach.jpg");
+	  beach.explore(); 
+	  beach.keepOnlyGreen();
+	  beach.explore(); 
+  }
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -33,6 +46,25 @@ public class PictureTester
     caterpillar.explore();
   }
   
+  public static void testMirrorVerticalRightToLeft() {
+	  Picture caterpillar = new Picture("src/images/caterpillar.jpg");
+	    caterpillar.explore();
+	    caterpillar.mirrorVerticalRightToLeft();
+	    caterpillar.explore();
+  }
+  
+  public static void testMirrorHorizontal() {
+	  Picture motorcycle = new Picture("src/images/redMotorcycle.jpg"); 
+	  motorcycle.explore(); 
+	  motorcycle.mirrorHorizontal(); 
+	  motorcycle.explore(); 
+  }
+  public static void testMirrorHorizontalBotToTop() {
+	  Picture motorcycle = new Picture("src/images/redMotorcycle.jpg"); 
+	  motorcycle.explore(); 
+	  motorcycle.mirrorHorizontalBotToTop(); 
+	  motorcycle.explore(); 
+  }
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -86,13 +118,16 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    //testkeepOnlyBlue();
-    //testKeepOnlyRed();
-    //testKeepOnlyGreen();
+    testkeepOnlyBlue();
+    testkeepOnlyRed();
+    testkeepOnlyGreen();
     //testNegate();
-   // testGrayscale();
+   //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
+	//testMirrorVerticalRightToLeft(); 
+	  //testMirrorHorizontal(); 
+	//testMirrorHorizontalBotToTop(); 
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
@@ -107,6 +142,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-	  testWater(); 
+	  //testWater(); 
   }
 }
