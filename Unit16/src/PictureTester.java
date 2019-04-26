@@ -74,12 +74,30 @@ public class PictureTester
     temple.explore();
   }
   
+  public static void testMirrorArms() {
+	  Picture snowman = new Picture("src/images/snowman.jpg"); 
+	  snowman.explore(); snowman.mirrorArms(); 
+	  snowman.explore(); 
+  }
+  
+  public static void testMirrorGull() { 
+	  Picture gulls = new Picture("src/images/seagull.jpg"); 
+	  gulls.explore();
+	  gulls.mirrorGull(); 
+	  gulls.explore(); 
+  }
   /** Method to test the collage method */
   public static void testCollage()
   {
     Picture canvas = new Picture("src/images/640x480.jpg");
     canvas.createCollage();
     canvas.explore();
+  }
+  
+  public static void testmyCollage() {
+	  Picture canvas = new Picture("src/images/640x480.jpg"); 
+	  canvas.myCollage();
+	  canvas.explore(); 
   }
   
   /** Method to test edgeDetection */
@@ -90,6 +108,11 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void edgeDetection2() { 
+Picture swan = new Picture("src/images/swan.jpg");
+  swan.edgeDetection(10);
+  swan.explore();
+  }
   public static void testNegate() {
 	  Picture swan = new Picture("src/images/swan.jpg"); 
 	  swan.explore(); 
@@ -110,6 +133,8 @@ public class PictureTester
 	  water.fixUnderwater(); 
 	  water.explore(); 
   }
+  
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -118,9 +143,9 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    testkeepOnlyBlue();
-    testkeepOnlyRed();
-    testkeepOnlyGreen();
+    //testkeepOnlyBlue();
+    //testkeepOnlyRed();
+    //testkeepOnlyGreen();
     //testNegate();
    //testGrayscale();
     //testFixUnderwater();
@@ -133,7 +158,7 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    //testCopy();
+    //testmyCollage(); 
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
