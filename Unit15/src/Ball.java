@@ -5,7 +5,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block
+public class Ball extends Block implements Collidable
 {
 	private int xSpeed;
 	private int ySpeed;
@@ -63,7 +63,7 @@ public class Ball extends Block
    {
    	//draw a white ball at old ball location
 
-
+	   draw(window,Color.WHITE); 
       setX(getX()+xSpeed);
 		//setY
       setY(getY() + ySpeed); 
@@ -95,34 +95,40 @@ public class Ball extends Block
 	
 //add a toString() method
 	public boolean didCollideLeft(Object obj) {
-		Paddle paddle = (Paddle)obj;
-		if (getX()<=paddle.getX()+paddle.getWidth()&&getX()>paddle.getX()&&(getY()>=paddle.getY() && getY()<=paddle.getY()+paddle.getHeight())){
-			return true;
-		}
-		return false;
+		Block other = (Block)obj;
+		return (getX() <= (other.getX() + other.getWidth() + Math.abs(getXSpeed()))
+				&& getX() > (other.getX() - getWidth() - Math.abs(getXSpeed()))
+				&& getX()>=(other.getX())
+				&& getY()<=(other.getY()+other.getHeight())
+				&& (getY()+getHeight())>=other.getY());
 	}
 
 	public boolean didCollideRight(Object obj) {
-		Paddle paddle = (Paddle)obj;
-		if (getX()+getWidth()>=paddle.getX()&&getX()<paddle.getX()&&(getY()>=paddle.getY() && getY()<=paddle.getY()+paddle.getHeight())){
-			return true;
-		}
-		return false;
+		Block other = (Block)obj;
+		return (getX() < (other.getX() + other.getWidth() + Math.abs(getXSpeed()))
+				&& getX() >= (other.getX() - getWidth() - Math.abs(getXSpeed()))
+				&& getX()<=other.getX()+other.getWidth()
+				&& getY()<=(other.getY()+other.getHeight())
+				&& (getY()+getHeight())>=other.getY());
 	}
 
 	public boolean didCollideTop(Object obj) {
-		Paddle paddle = (Paddle)obj;
-		if (getY()+getHeight()>=paddle.getY() && getY() < paddle.getY()+paddle.getHeight() && (getX()>=paddle.getX() && getX()+getWidth()<=paddle.getX()+paddle.getWidth())){
-			return true;
-		}
-		return false;
+		Block other = (Block)obj;
+		return (getY() >= (other.getY() - getHeight() - Math.abs(getYSpeed()))
+				&& getY() < (other.getY() + other.getHeight() + Math.abs(getYSpeed())) 
+				&& (getX()>=other.getX()
+				&& getX()<=(other.getX()+other.getWidth())
+				&& (getX()+getWidth())>=other.getX()
+				&& (getX()+getWidth())<=other.getX()+other.getWidth()));
 	}
 
 	public boolean didCollideBottom(Object obj) {
-		Paddle paddle = (Paddle) obj;
-		if (getY()+getHeight()>paddle.getY() && getY() <= paddle.getY()+paddle.getHeight() && (getX()>=paddle.getX() && getX()+getWidth()<=paddle.getX()+paddle.getWidth())){
-					return true;			
-				}
-		return false;
+		Block other = (Block)obj;
+		return (getY() > (other.getY() - getHeight() - Math.abs(getYSpeed()))
+				&& getY() <= (other.getY() + other.getHeight() + Math.abs(getYSpeed())) 
+				&& (getX()>=other.getX()
+				&& getX()<=(other.getX()+other.getWidth())
+				&& (getX()+getWidth())>=other.getX()
+				&& (getX()+getWidth())<=other.getX()+other.getWidth()));
 	}
 }

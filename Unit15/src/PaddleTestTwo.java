@@ -78,7 +78,7 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 		if(keys[1] == true)
 		{
 			//move left paddle down and draw it on the window
-			leftPaddle.moveUpAndDraw(window);
+			
 
 		}
 		if(keys[2] == true)
