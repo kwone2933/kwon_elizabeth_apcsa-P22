@@ -42,6 +42,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		new Thread(this).start();
 
 		setVisible(true);
+		
+		alienOne = new Alien(100,100,30,30,1); 
+		alienTwo = new Alien(80,100,30,30,1); 
 	}
 
    public void update(Graphics window)

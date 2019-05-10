@@ -37,8 +37,8 @@ public class Alien extends MovingThing
 		speed=s;
 		try
 		{
-			URL url = getClass().getResource("/images/alien.jpg");
-			image = ImageIO.read(url);
+			//URL url = getClass().getResource("src/images/alien.jpg");
+			image = ImageIO.read(new File("src/images/ship.jpg"));
 		}
 		catch(Exception e)
 		{
