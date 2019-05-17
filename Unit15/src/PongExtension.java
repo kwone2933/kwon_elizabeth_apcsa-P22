@@ -33,14 +33,14 @@ public class PongExtension extends Canvas implements KeyListener, Runnable {
 		//blocks on top
 		for (int x = 85; x < 675; x += 80) {
 			for (int y = 5; y < 85; y += 40) {
-				blocks.add(new Block(x, y,80,30, Color.ORANGE));
+				blocks.add(new Block(x, y,80,30, Color.BLUE));
 			}
 		}
 		
 		//blocks on bottom
 		for (int x = 85; x < 675; x += 80) {
 			for (int y = 525; y > 445; y -= 40) {
-				blocks.add(new Block(x, y,80,30, Color.ORANGE));
+				blocks.add(new Block(x, y,80,30, Color.BLUE));
 			}
 		}
 		
@@ -162,8 +162,8 @@ public class PongExtension extends Canvas implements KeyListener, Runnable {
 		if (blocks.size() == 0) {
 			if (!played) {
 				//set up all variables related to the game
-				ball = new Ball(350, 200);
-				mainPaddle = new PaddleExtension(375, 275, 50, 50, Color.BLUE, 2);
+			
+				
 				//blocks on the left
 				for (int x = 5; x < 85; x += 40) {
 					for (int y = 5; y < 600-55; y += 80) {
