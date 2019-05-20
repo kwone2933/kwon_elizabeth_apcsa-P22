@@ -490,4 +490,26 @@ public class Picture extends SimplePicture
     beach.explore();
   }
   
+  public void encode(Picture messagePict) {
+	  Pixel[][] messagePixels = messagePict.getPixels2D(); 
+	  Pixel[][] currPixels = this.getPixels2D(); 
+	  Pixel currPixel = null; 
+	  Pixel messagePixel = null; 
+	  int count = 0; 
+	  for (int row = 0; row<this.getHeight(); row++) {
+		  for (int col = 0; col < this.getWidth(); col++) {
+			  currPixel = currPixels[row][col]; 
+			  if ()
+		  }
+	  }
+  }
+  
+  public void decode() {
+	  Pixel[][] pixels = this.getPixels2D(); 
+	  int height = this.getHeight(); 
+	  int width = this.getWidth(); 
+	  Pixel currPixel = null; 
+	  Pixel messagePixel = null;
+  }
+  
 } // this } is the end of class Picture, put all new methods before this
