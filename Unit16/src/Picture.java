@@ -495,13 +495,44 @@ public class Picture extends SimplePicture
 	  Pixel[][] currPixels = this.getPixels2D(); 
 	  Pixel currPixel = null; 
 	  Pixel messagePixel = null; 
+	  int averagered = 0; 
+	  int averageblue = 0; 
+	  int averagegreen = 0; 
 	  int count = 0; 
-	  for (int row = 0; row<this.getHeight(); row++) {
-		  for (int col = 0; col < this.getWidth(); col++) {
+	  for (int row = 1; row<this.getHeight()-1; row++) {
+		  for (int col = 1; col < this.getWidth()-1; col++) {
 			  currPixel = currPixels[row][col]; 
-			  if ()
+			  messagePixel = messagePixels[row][col]; 
+			  averagered = (int) (currPixels[row-1][col-1].getRed() + currPixels[row][col-1].getRed()
+					+  currPixels[row][col-1].getRed() + currPixels[row+1][col+1].getRed() +
+					  currPixels[row][col+1].getRed() + currPixels[row+1][col].getRed() + currPixels[row-1][col+1].getRed()+
+					  currPixels[row+1][col-1].getRed())/8; 
+			  averageblue = (int) (currPixels[row-1][col-1].getBlue() + currPixels[row][col-1].getBlue()
+						+  currPixels[row][col-1].getBlue() + currPixels[row+1][col+1].getBlue() +
+						currPixels[row][col+1].getBlue() +currPixels[row+1][col].getBlue() + currPixels[row-1][col+1].getBlue()+
+						currPixels[row+1][col-1].getBlue())/8; 
+			  averagegreen = (int) (currPixels[row-1][col-1].getGreen() + currPixels[row][col-1].getGreen()
+						+  currPixels[row][col-1].getGreen() + currPixels[row+1][col+1].getGreen() +
+						currPixels[row][col+1].getGreen() + currPixels[row+1][col].getGreen() + currPixels[row-1][col+1].getGreen()+
+						currPixels[row+1][col-1].getGreen())/8; 
+			  if (currPixel.getRed() == averagered) {
+				  currPixel.setRed(currPixel.getRed()+1);  
+			  }
+			  else if (currPixel.getBlue() == averageblue) {
+				  currPixel.setBlue(currPixel.getBlue()+1);  
+			  }
+			  else if (currPixel.getGreen() == averagegreen) {
+				  currPixel.setGreen(currPixel.getGreen()+1);  
+			  }
+			  if (messagePixel.colorDistance(Color.BLACK)< 50) {
+				  currPixel.setRed(averagered);
+				  currPixel.setBlue(averageblue);
+				  currPixel.setGreen(averagegreen );
+				  count++; 
+			  }
 		  }
 	  }
+	  System.out.println(count);
   }
   
   public void decode() {

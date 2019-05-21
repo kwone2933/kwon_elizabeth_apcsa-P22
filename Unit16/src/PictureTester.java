@@ -134,6 +134,14 @@ Picture swan = new Picture("src/images/swan.jpg");
 	  water.explore(); 
   }
   
+  public static void testEncodeAndDecode() { 
+	  Picture beach = new Picture("src/images/beach.jpg");
+	  Picture code = new Picture("src/images/msg.jpg");
+	  beach.explore(); 
+	  code.explore(); 
+	  beach.encode(code);
+	  beach.explore(); 
+  }
 
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -162,7 +170,7 @@ Picture swan = new Picture("src/images/swan.jpg");
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
-    //testEncodeAndDecode();
+    testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
