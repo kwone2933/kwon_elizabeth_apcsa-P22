@@ -494,40 +494,59 @@ public class Picture extends SimplePicture
 	  Pixel[][] messagePixels = messagePict.getPixels2D(); 
 	  Pixel[][] currPixels = this.getPixels2D(); 
 	  Pixel currPixel = null; 
-	  Pixel messagePixel = null; 
-	  int averagered = 0; 
-	  int averageblue = 0; 
-	  int averagegreen = 0; 
+	  Pixel messagePixel = null;  
 	  int count = 0; 
-	  for (int row = 1; row<this.getHeight()-1; row++) {
-		  for (int col = 1; col < this.getWidth()-1; col++) {
+	
+	  for (int row = 0; row<this.getHeight(); row++) {
+		  for (int col = 0; col<this.getWidth(); col++) {
 			  currPixel = currPixels[row][col]; 
-			  messagePixel = messagePixels[row][col]; 
-			  averagered = (int) (currPixels[row-1][col-1].getRed() + currPixels[row][col-1].getRed()
-					+  currPixels[row][col-1].getRed() + currPixels[row+1][col+1].getRed() +
-					  currPixels[row][col+1].getRed() + currPixels[row+1][col].getRed() + currPixels[row-1][col+1].getRed()+
-					  currPixels[row+1][col-1].getRed())/8; 
-			  averageblue = (int) (currPixels[row-1][col-1].getBlue() + currPixels[row][col-1].getBlue()
-						+  currPixels[row][col-1].getBlue() + currPixels[row+1][col+1].getBlue() +
-						currPixels[row][col+1].getBlue() +currPixels[row+1][col].getBlue() + currPixels[row-1][col+1].getBlue()+
-						currPixels[row+1][col-1].getBlue())/8; 
-			  averagegreen = (int) (currPixels[row-1][col-1].getGreen() + currPixels[row][col-1].getGreen()
-						+  currPixels[row][col-1].getGreen() + currPixels[row+1][col+1].getGreen() +
-						currPixels[row][col+1].getGreen() + currPixels[row+1][col].getGreen() + currPixels[row-1][col+1].getGreen()+
-						currPixels[row+1][col-1].getGreen())/8; 
-			  if (currPixel.getRed() ==averagered || currPixel.getBlue() ==averageblue || currPixel.getGreen() == averagegreen) {
-				  currPixel.setRed(currPixel.getRed() + 10);
-				  currPixel.setBlue(currPixel.getBlue() + 10);
-				  currPixel.setGreen(currPixel.getGreen() + 10);
-
+			  int pixeltensred = 0; 
+			  if (currPixel.getRed() <10) {
+				  pixeltensred = 0; 
 			  }
-			  
-			  
-			  if (messagePixel.colorDistance(Color.BLACK)< 50) {
-				  currPixel.setRed(averagered+3);
-				  currPixel.setBlue(averageblue+3);
-				  currPixel.setGreen(averagegreen+3 );
-				  count++; 
+			  else {
+				  pixeltensred = (currPixel.getRed() %100)/10; 
+			  }
+			  if (pixeltensred %3 ==1) {
+				  currPixel.setRed(currPixel.getRed() + 20);
+			  }
+			  else if (pixeltensred %3 ==2) {
+				  currPixel.setRed(currPixel.getRed()+10);
+			  }
+			  int pixeltensblue = 0; 
+			  if (currPixel.getBlue() <10) {
+				  pixeltensblue = 0; 
+			  }
+			  else {
+				  pixeltensblue = (currPixel.getBlue() %100)/10; 
+			  }
+			  if (pixeltensblue %3 ==1) {
+				  currPixel.setBlue(currPixel.getBlue() + 20);
+			  }
+			  else if (pixeltensblue %3 ==2) {
+				  currPixel.setBlue(currPixel.getBlue()+10);
+			  }
+			  int pixeltensgreen = 0; 
+			  if (currPixel.getGreen() <10) {
+				  pixeltensgreen = 0; 
+			  }
+			  else {
+				  pixeltensgreen = (currPixel.getGreen() %100)/10; 
+			  }
+			  if (pixeltensgreen %3 ==1) {
+				  currPixel.setGreen(currPixel.getGreen() + 20);
+			  }
+			  else if (pixeltensgreen %3 ==2) {
+				  currPixel.setGreen(currPixel.getGreen()+10);
+			  }
+			  messagePixel = messagePixels[row][col]; 
+			  if (messagePixel.colorDistance(Color.BLACK)<50) {
+				 if (pixeltensblue %3 ==0||pixeltensred %3 ==0 || pixeltensgreen %3 ==0) {
+					 currPixel.setBlue(currPixel.getBlue()+10);
+					 currPixel.setRed(currPixel.getRed()+10);
+					 currPixel.setGreen(currPixel.getGreen() + 10);
+					 count++;
+				 }
 			  }
 		  }
 	  }
@@ -543,31 +562,37 @@ public class Picture extends SimplePicture
 	  Picture messagePicture = new Picture(height,width); 
 	  Pixel[][] messagePixels= messagePicture.getPixels2D(); 
 	  int count = 0; 
-	  for (int row = 1; row<this.getHeight()-1; row++) {
-		  for (int col = 1; col < this.getWidth()-1; col++) {
-			  currPixel = pixels[row][col];
-			  messagePixel = messagePixels[row][col]; 
-			 int averagered = (int) (pixels[row-1][col-1].getRed() + pixels[row][col-1].getRed()
-						+  pixels[row][col-1].getRed() + pixels[row+1][col+1].getRed() +
-						pixels[row][col+1].getRed() + pixels[row+1][col].getRed() + pixels[row-1][col+1].getRed()+
-						pixels[row+1][col-1].getRed())/8; 
-				  int averageblue = (int) (pixels[row-1][col-1].getBlue() + pixels[row][col-1].getBlue()
-							+  pixels[row][col-1].getBlue() + pixels[row+1][col+1].getBlue() +
-							pixels[row][col+1].getBlue() +pixels[row+1][col].getBlue() + pixels[row-1][col+1].getBlue()+
-							pixels[row+1][col-1].getBlue())/8; 
-				  int averagegreen = (int) (pixels[row-1][col-1].getGreen() + pixels[row][col-1].getGreen()
-							+ pixels[row][col-1].getGreen() + pixels[row+1][col+1].getGreen() +
-							pixels[row][col+1].getGreen() + pixels[row+1][col].getGreen() + pixels[row-1][col+1].getGreen()+
-							pixels[row+1][col-1].getGreen())/8;
-				
-				if (currPixel.getRed() == (averagered+3) && currPixel.getBlue() ==(averageblue+3) && currPixel.getGreen() == (averagegreen+3)) {
-					messagePixel.setColor(Color.BLACK); 
-					count++;
-				}
-				
-		  }
-		
-	  }
+	 for (int row = 0; row<this.getHeight(); row++) {
+		 for (int col = 0; col<this.getWidth(); col++) {
+			 currPixel = pixels[row][col]; 
+			 messagePixel = messagePixels[row][col]; 
+			 int pixeltensred = 0;  
+			  if (currPixel.getRed() <10) {
+				  pixeltensred = 0; 
+			  }
+			  else {
+				  pixeltensred = (currPixel.getRed() %100)/10; 
+			  }
+			  int pixeltensblue = 0; 
+			  if (currPixel.getBlue() <10) {
+				  pixeltensblue = 0; 
+			  }
+			  else {
+				  pixeltensblue = (currPixel.getBlue() %100)/10; 
+			  }
+			  int pixeltensgreen = 0; 
+			  if (currPixel.getGreen() <10) {
+				  pixeltensgreen = 0; 
+			  }
+			  else {
+				  pixeltensgreen = (currPixel.getGreen() %100)/10; 
+			  }
+			 if (pixeltensred %3 !=0 &&pixeltensblue%3 !=0 && pixeltensgreen%3 !=0) {
+				 messagePixel.setColor(Color.BLACK); 
+				 count++; 
+			 }
+		 }
+	 }
 	  System.out.println(count); 
 		 
 	return messagePicture;
