@@ -515,19 +515,18 @@ public class Picture extends SimplePicture
 						+  currPixels[row][col-1].getGreen() + currPixels[row+1][col+1].getGreen() +
 						currPixels[row][col+1].getGreen() + currPixels[row+1][col].getGreen() + currPixels[row-1][col+1].getGreen()+
 						currPixels[row+1][col-1].getGreen())/8; 
-			  if (currPixel.getRed() == averagered) {
-				  currPixel.setRed(currPixel.getRed()+1);  
+			  if (currPixel.getRed() ==averagered || currPixel.getBlue() ==averageblue || currPixel.getGreen() == averagegreen) {
+				  currPixel.setRed(currPixel.getRed() + 10);
+				  currPixel.setBlue(currPixel.getBlue() + 10);
+				  currPixel.setGreen(currPixel.getGreen() + 10);
+
 			  }
-			  else if (currPixel.getBlue() == averageblue) {
-				  currPixel.setBlue(currPixel.getBlue()+1);  
-			  }
-			  else if (currPixel.getGreen() == averagegreen) {
-				  currPixel.setGreen(currPixel.getGreen()+1);  
-			  }
+			  
+			  
 			  if (messagePixel.colorDistance(Color.BLACK)< 50) {
-				  currPixel.setRed(averagered);
-				  currPixel.setBlue(averageblue);
-				  currPixel.setGreen(averagegreen );
+				  currPixel.setRed(averagered+3);
+				  currPixel.setBlue(averageblue+3);
+				  currPixel.setGreen(averagegreen+3 );
 				  count++; 
 			  }
 		  }
@@ -548,7 +547,7 @@ public class Picture extends SimplePicture
 		  for (int col = 1; col < this.getWidth()-1; col++) {
 			  currPixel = pixels[row][col];
 			  messagePixel = messagePixels[row][col]; 
-			  int averagered = (int) (pixels[row-1][col-1].getRed() + pixels[row][col-1].getRed()
+			 int averagered = (int) (pixels[row-1][col-1].getRed() + pixels[row][col-1].getRed()
 						+  pixels[row][col-1].getRed() + pixels[row+1][col+1].getRed() +
 						pixels[row][col+1].getRed() + pixels[row+1][col].getRed() + pixels[row-1][col+1].getRed()+
 						pixels[row+1][col-1].getRed())/8; 
@@ -560,11 +559,12 @@ public class Picture extends SimplePicture
 							+ pixels[row][col-1].getGreen() + pixels[row+1][col+1].getGreen() +
 							pixels[row][col+1].getGreen() + pixels[row+1][col].getGreen() + pixels[row-1][col+1].getGreen()+
 							pixels[row+1][col-1].getGreen())/8;
-				if (currPixel.getRed() == averagered && currPixel.getBlue() ==averageblue && currPixel.getGreen() == averagegreen) {
+				
+				if (currPixel.getRed() == (averagered+3) && currPixel.getBlue() ==(averageblue+3) && currPixel.getGreen() == (averagegreen+3)) {
 					messagePixel.setColor(Color.BLACK); 
 					count++;
 				}
-				  
+				
 		  }
 		
 	  }
