@@ -535,12 +535,42 @@ public class Picture extends SimplePicture
 	  System.out.println(count);
   }
   
-  public void decode() {
+  public Picture decode() {
 	  Pixel[][] pixels = this.getPixels2D(); 
 	  int height = this.getHeight(); 
 	  int width = this.getWidth(); 
 	  Pixel currPixel = null; 
 	  Pixel messagePixel = null;
+	  Picture messagePicture = new Picture(height,width); 
+	  Pixel[][] messagePixels= messagePicture.getPixels2D(); 
+	  int count = 0; 
+	  for (int row = 1; row<this.getHeight()-1; row++) {
+		  for (int col = 1; col < this.getWidth()-1; col++) {
+			  currPixel = pixels[row][col];
+			  messagePixel = messagePixels[row][col]; 
+			  int averagered = (int) (pixels[row-1][col-1].getRed() + pixels[row][col-1].getRed()
+						+  pixels[row][col-1].getRed() + pixels[row+1][col+1].getRed() +
+						pixels[row][col+1].getRed() + pixels[row+1][col].getRed() + pixels[row-1][col+1].getRed()+
+						pixels[row+1][col-1].getRed())/8; 
+				  int averageblue = (int) (pixels[row-1][col-1].getBlue() + pixels[row][col-1].getBlue()
+							+  pixels[row][col-1].getBlue() + pixels[row+1][col+1].getBlue() +
+							pixels[row][col+1].getBlue() +pixels[row+1][col].getBlue() + pixels[row-1][col+1].getBlue()+
+							pixels[row+1][col-1].getBlue())/8; 
+				  int averagegreen = (int) (pixels[row-1][col-1].getGreen() + pixels[row][col-1].getGreen()
+							+ pixels[row][col-1].getGreen() + pixels[row+1][col+1].getGreen() +
+							pixels[row][col+1].getGreen() + pixels[row+1][col].getGreen() + pixels[row-1][col+1].getGreen()+
+							pixels[row+1][col-1].getGreen())/8;
+				if (currPixel.getRed() == averagered && currPixel.getBlue() ==averageblue && currPixel.getGreen() == averagegreen) {
+					messagePixel.setColor(Color.BLACK); 
+					count++;
+				}
+				  
+		  }
+		
+	  }
+	  System.out.println(count); 
+		 
+	return messagePicture;
   }
   
 } // this } is the end of class Picture, put all new methods before this

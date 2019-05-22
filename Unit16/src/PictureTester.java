@@ -138,9 +138,11 @@ Picture swan = new Picture("src/images/swan.jpg");
 	  Picture beach = new Picture("src/images/beach.jpg");
 	  Picture code = new Picture("src/images/msg.jpg");
 	  beach.explore(); 
-	  code.explore(); 
 	  beach.encode(code);
+	  code.explore(); 
 	  beach.explore(); 
+	  Picture result = beach.decode(); 
+	  result.explore(); 
   }
 
   /** Main method for testing.  Every class can have a main
