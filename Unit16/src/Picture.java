@@ -541,17 +541,20 @@ public class Picture extends SimplePicture
 			  }
 			  messagePixel = messagePixels[row][col]; 
 			  if (messagePixel.colorDistance(Color.BLACK)<50) {
-				 if (pixeltensblue %3 ==0||pixeltensred %3 ==0 || pixeltensgreen %3 ==0) {
-					 currPixel.setBlue(currPixel.getBlue()+10);
-					 currPixel.setRed(currPixel.getRed()+10);
-					 currPixel.setGreen(currPixel.getGreen() + 10);
-					 count++;
+				 if (pixeltensred%3==0 || pixeltensblue%3==0 || pixeltensgreen%3==0) {
+					currPixel.setRed(currPixel.getRed()+10);
+					currPixel.setGreen(currPixel.getGreen()+10);
+					currPixel.setBlue(currPixel.getBlue()+10);
+					count++; 
+				 } 
 				 }
 			  }
+		  
 		  }
-	  }
 	  System.out.println(count);
-  }
+	  }
+	
+  
   
   public Picture decode() {
 	  Pixel[][] pixels = this.getPixels2D(); 
@@ -587,14 +590,13 @@ public class Picture extends SimplePicture
 			  else {
 				  pixeltensgreen = (currPixel.getGreen() %100)/10; 
 			  }
-			 if (pixeltensred %3 !=0 &&pixeltensblue%3 !=0 && pixeltensgreen%3 !=0) {
+			 if (pixeltensred %3 !=0 ||pixeltensblue%3 !=0 || pixeltensgreen%3 !=0) {
 				 messagePixel.setColor(Color.BLACK); 
 				 count++; 
 			 }
 		 }
 	 }
-	  System.out.println(count); 
-		 
+	System.out.println(count); 
 	return messagePicture;
   }
   
