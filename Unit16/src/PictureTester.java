@@ -136,7 +136,7 @@ Picture swan = new Picture("src/images/swan.jpg");
   
   public static void testEncodeAndDecode() { 
 	  Picture beach = new Picture("src/images/beach.jpg");
-	  Picture code = new Picture("src/images/msg.jpg");
+	  Picture code = new Picture("src/images/apple_icon.jpg");
 	  beach.explore(); 
 	  beach.encode(code);
 	  code.explore(); 
